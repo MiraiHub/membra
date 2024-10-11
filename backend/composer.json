@@ -1,0 +1,32 @@
+{
+    "name": "miraihub/membra",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "Miraihub\\Membra\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.3",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "slim/slim": "^4.14.0",
+        "slim/psr7": "^1.4.0",
+        "doctrine/orm": "^3.3",
+        "doctrine/dbal": "^4.3",
+        "vlucas/phpdotenv": "^v5.6.1",
+        "php-di/php-di": "^7.0.7",
+        "symfony/cache": "^7.2",
+        "php-di/slim-bridge": "3.4.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "3.x-dev"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

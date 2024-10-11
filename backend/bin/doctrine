@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+use DI\Container;
+use DI\DependencyException;
+use DI\NotFoundException;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+
+const APP_ROOT = __DIR__;
+
+require __DIR__.'/../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/..');
+$dotenv->load();
+
+/** @var Container $container */
+$container = require_once __DIR__.'/../bootstrap/container.php';
+
+try {
+    ConsoleRunner::run(new SingleManagerProvider($container->get(EntityManager::class)));
+} catch (DependencyException|NotFoundException $e) {
+    echo $e->getMessage();
+    die();
+}
